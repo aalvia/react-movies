@@ -58,4 +58,9 @@ export class ReseniaController {
         async findByUser(@Param('id') id: string) {
           return this.reseniaService.findByUser(id);
         }
+
+        @Get('bymovie/:id')
+        async findByMovie(@Param('id') id: string) {
+          return this.reseniaService.findByMovie(id);
+        }
 }

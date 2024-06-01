@@ -35,4 +35,10 @@ export class ReseniaService {
       return resenias;
    }
 
+   async findByMovie(id: string){
+      const resenias = await this.reseniaModel.find({ "idmovie": id });
+      return resenias;
+   }
+
+
 }
