@@ -30,4 +30,9 @@ export class ReseniaService {
          return this.reseniaModel.findByIdAndUpdate(id,resenia, {new:true})
      }
 
+     async findByUser(id: string){
+      const resenias = await this.reseniaModel.find({ "iduser": id });
+      return resenias;
+   }
+
 }

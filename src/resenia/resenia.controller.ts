@@ -53,4 +53,9 @@ export class ReseniaController {
             }
             return user
         }
+
+        @Get('byuser/:id')
+        async findByUser(@Param('id') id: string) {
+          return this.reseniaService.findByUser(id);
+        }
 }
