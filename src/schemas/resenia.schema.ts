@@ -9,6 +9,10 @@ export class Resenia {
     iduser: string;
     @Prop()
     estrellas: string;
+    @Prop()
+    idmovie: string;
+    @Prop()
+    namemovie: string;
 }
 
 export const ReseniaSchema = SchemaFactory.createForClass(Resenia);
