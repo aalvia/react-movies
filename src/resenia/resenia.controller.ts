@@ -1,24 +1,27 @@
 import { Controller,Get,Post,Delete,Put,Body,Param,ConflictException, NotFoundException, HttpCode } from '@nestjs/common';
 import { ReseniaService } from './resenia.service';
+import { UsersService } from '../users/users.service';
+
+import mongoose from 'mongoose'; // Importa mongoose
 import { CreateReseniaDto } from 'src/dto/create-resenia';
 import { async } from 'rxjs';
 
 @Controller('resenias')
 export class ReseniaController {
-    constructor(private reseniaService: ReseniaService){ }
+    constructor(private reseniaService: ReseniaService,private userService: UsersService){ }
         @Get()
-        findAll(){
+        async findAll(){
             return this.reseniaService.findAll();
         }
 
         @Get(':id')
         async findOne(@Param('id') id: string){
           
-            const user = await this.reseniaService.findOne(id);
-            if (!user){
-                throw new NotFoundException("user no encontrada");
+            const resenia = await this.reseniaService.findOne(id);
+            if (!resenia){
+                throw new NotFoundException("no hay datos");
             }
-            return user;
+            return resenia;
         }
 
         @Post()
